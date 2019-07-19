@@ -39,12 +39,12 @@
     <div fxLayout="row" fxLayoutAlign="space-around center">
         <mat-card fxFlex="100" class="my-m-2">
             <mat-card-header>
-                <mat-card-title>Evaluate Result</mat-card-title>
+                <mat-card-title *ngIf="dataCompanyOne && dataCompanyTwo">Evaluate Result</mat-card-title>
                 <mat-card-subtitle></mat-card-subtitle>
             </mat-card-header>
             <mat-card-content fxLayout="column" fxLayoutAlign="center center">
                 <div id="chartdiv" style="min-height: 300px; width: 500px;"></div>
-                <div fxFlex="90" class="my-m-3 my-pb-2 my-px-5" fxLayout="row" fxLayoutAlign="center center" style="border:2px solid rgb(182, 180, 180);">
+                <div fxFlex="90" class="my-m-3 my-pb-2 my-px-5" fxLayout="row" fxLayoutAlign="center center" style="border:2px solid rgb(182, 180, 180);" *ngIf="dataCompanyOne && dataCompanyTwo">
                     <mat-icon style="color: rgb(248, 54, 54); font-size: 45px;">
                         flag
                     </mat-icon>
@@ -53,7 +53,7 @@
                         <div class="mat-caption">Caption</div>
                     </div>
                 </div>
-                <div fxLayout="row" fxLayoutAlign="center center" fxFill>
+                <div fxLayout="row" fxLayoutAlign="center center" fxFill *ngIf="dataCompanyOne && dataCompanyTwo">
                     <div fxFlex="45">
                         <table cellpading="0" cellspacing="0" class="my-evaluate-table">
                             <tr>
@@ -61,19 +61,19 @@
                             </tr>
                             <tr>
                                 <td class="label">Company name</td>
-                                <td>1ST FIRE RESCUE SDN BHD</td>
+                                <td>{{dataCompanyOne.NAMA_SYARIKAT}}</td>
                             </tr>
                             <tr>
                                 <td class="label">Registration No.</td>
-                                <td></td>
+                                <td>{{dataCompanyOne.ID_PENDAFTARN_SYARIKAT}}</td>
                             </tr>
                             <tr>
                                 <td class="label">Owner</td>
-                                <td>FAIZAH BINTI KIPLI(IC: 800919136006),AYATULLAH BIN SAPAWI(IC: 790707135179)</td>
+                                <td>{{dataCompanyOne.COMPANY_OWNER}}</td>
                             </tr>
                             <tr>
                                 <td class="label">City & State</td>
-                                <td></td>
+                                <td>{{dataCompanyOne.CITY}}, {{dataCompanyOne.STATE}}</td>
                             </tr>
                             <tr>
                                 <td class="label">Submission Rate</td>
@@ -88,19 +88,19 @@
                             </tr>
                             <tr>
                                 <td class="label">Company name</td>
-                                <td>1ST FIRE RESCUE SDN BHD</td>
+                                <td>{{dataCompanyTwo.NAMA_SYARIKAT}}</td>
                             </tr>
                             <tr>
                                 <td class="label">Registration No.</td>
-                                <td></td>
+                                <td>{{dataCompanyTwo.ID_PENDAFTARN_SYARIKAT}}</td>
                             </tr>
                             <tr>
                                 <td class="label">Owner</td>
-                                <td>FAIZAH BINTI KIPLI(IC: 800919136006),AYATULLAH BIN SAPAWI(IC: 790707135179)</td>
+                                <td>{{dataCompanyTwo.COMPANY_OWNER}}</td>
                             </tr>
                             <tr>
                                 <td class="label">City & State</td>
-                                <td></td>
+                                <td>{{dataCompanyTwo.CITY}}, {{dataCompanyTwo.STATE}}</td>
                             </tr>
                             <tr>
                                 <td class="label">Submission Rate</td>

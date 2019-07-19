@@ -12,12 +12,12 @@ const httpOptions = {
 })
 export class CompanyService {
 
-  private globalUrl = 'http://localhost/cartelogy-backend/';
+  private globalUrl = 'http://localhost/cartelogy-backend/company/';
 
   constructor(private http: HttpClient,) { }
 
   getCompany (id) {
-    return this.http.get<any>(this.globalUrl + id, httpOptions).pipe(
+    return this.http.get<any>(this.globalUrl + 'getCompanyByMofNo/' + id, httpOptions).pipe(
       tap()
     );
   }

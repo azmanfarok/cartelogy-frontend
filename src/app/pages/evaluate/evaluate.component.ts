@@ -16,7 +16,8 @@ export class EvaluateComponent implements OnInit {
   myprogressbar: boolean = false;
   company_one: string;
   company_two: string;
-  dataCompany: any;
+  dataCompanyOne: any;
+  dataCompanyTwo: any;
 
   constructor(
     private _company: CompanyService,
@@ -29,19 +30,26 @@ export class EvaluateComponent implements OnInit {
 
     this.myprogressbar = true;
 
-    // this._company.getCompany(this.company_one).subscribe(
-    //   success=>{
-    //     this.dataCompany = success['data'];
-    //   },
-    //   error=>{
-    //     console.error(error.status);
-    //   }
-    // );
+    this._company.getCompany(this.company_one).subscribe(
+      success=>{
+        this.dataCompanyOne = success;
+      },
+      error=>{
+        console.error(error.status);
+      }
+    );
 
+    this._company.getCompany(this.company_two).subscribe(
+      success=>{
+        this.dataCompanyTwo = success;
 
-    this.evaluatChart();
-
-    this.myprogressbar = false;
+        this.evaluatChart();
+        this.myprogressbar = false;
+      },
+      error=>{
+        console.error(error.status);
+      }
+    );
 
   }
 
