@@ -1,0 +1,117 @@
+<div class='my-progress-bar-container' *ngIf="myprogressbar">
+    <mat-progress-bar class="my-progress-bar" color="accent" mode="indeterminate" [value]="50" [bufferValue]="75">
+    </mat-progress-bar>
+</div>
+<div fxLayout="column" fxLayoutAlign="center" class="my-m-3">
+
+    <div fxLayout="row" fxLayoutAlign="space-around center">
+        <mat-card fxFlex="100" class="my-m-2">
+            <mat-card-header>
+                <mat-card-title>Comapny Evaluation</mat-card-title>
+                <mat-card-subtitle></mat-card-subtitle>
+            </mat-card-header>
+            <mat-card-content fxLayout="column" fxLayoutAlign="center center">
+                <div fxLayout="row" fxLayoutAlign="center center" fxFill>
+                    <div>
+                        <mat-form-field appearance="outline">
+                            <mat-label>Company one</mat-label>
+                            <input matInput placeholder="Company ID" [(ngModel)]="company_one">
+                            <mat-icon matSuffix>business</mat-icon>
+                        </mat-form-field>
+                    </div>
+                    <div class="my-ml-5">
+                        <mat-form-field appearance="outline">
+                            <mat-label>Company two</mat-label>
+                            <input matInput placeholder="Company ID" [(ngModel)]="company_two">
+                            <mat-icon matSuffix>business</mat-icon>
+                        </mat-form-field>
+                    </div>
+                    <div style="margin-bottom: 18px;" class="my-ml-5">
+                        <button mat-raised-button (click)="evaluate()">Evaluate</button>
+                    </div>
+                </div>
+            </mat-card-content>
+        </mat-card>
+
+    </div>
+
+
+    <div fxLayout="row" fxLayoutAlign="space-around center">
+        <mat-card fxFlex="100" class="my-m-2">
+            <mat-card-header>
+                <mat-card-title>Evaluate Result</mat-card-title>
+                <mat-card-subtitle></mat-card-subtitle>
+            </mat-card-header>
+            <mat-card-content fxLayout="column" fxLayoutAlign="center center">
+                <div id="chartdiv" style="min-height: 300px; width: 500px;"></div>
+                <div fxFlex="90" class="my-m-3 my-pb-2 my-px-5" fxLayout="row" fxLayoutAlign="center center" style="border:2px solid rgb(182, 180, 180);">
+                    <mat-icon style="color: rgb(248, 54, 54); font-size: 45px;">
+                        flag
+                    </mat-icon>
+                    <div class="my-ml-4 my-mt-2">
+                        <div style="font-size: 20px; font-weight: bold;">89% Join Together</div>
+                        <div class="mat-caption">Caption</div>
+                    </div>
+                </div>
+                <div fxLayout="row" fxLayoutAlign="center center" fxFill>
+                    <div fxFlex="45">
+                        <table cellpading="0" cellspacing="0" class="my-evaluate-table">
+                            <tr>
+                                <th colspan="2">Company One</th>
+                            </tr>
+                            <tr>
+                                <td class="label">Company name</td>
+                                <td>1ST FIRE RESCUE SDN BHD</td>
+                            </tr>
+                            <tr>
+                                <td class="label">Registration No.</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td class="label">Owner</td>
+                                <td>FAIZAH BINTI KIPLI(IC: 800919136006),AYATULLAH BIN SAPAWI(IC: 790707135179)</td>
+                            </tr>
+                            <tr>
+                                <td class="label">City & State</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td class="label">Submission Rate</td>
+                                <td></td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div fxFlex="45" class="my-ml-5">
+                        <table cellpading="0" cellspacing="0" class="my-evaluate-table">
+                            <tr>
+                                <th colspan="2">Company Two</th>
+                            </tr>
+                            <tr>
+                                <td class="label">Company name</td>
+                                <td>1ST FIRE RESCUE SDN BHD</td>
+                            </tr>
+                            <tr>
+                                <td class="label">Registration No.</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td class="label">Owner</td>
+                                <td>FAIZAH BINTI KIPLI(IC: 800919136006),AYATULLAH BIN SAPAWI(IC: 790707135179)</td>
+                            </tr>
+                            <tr>
+                                <td class="label">City & State</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td class="label">Submission Rate</td>
+                                <td></td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </mat-card-content>
+        </mat-card>
+
+    </div>
+
+</div>

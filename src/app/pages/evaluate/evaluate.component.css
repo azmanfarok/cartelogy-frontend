@@ -1,0 +1,21 @@
+.my-evaluate-table {
+    border-collapse: collapse;
+    font: 400 12px/20px Roboto, "Helvetica Neue", sans-serif!important;
+    color: rgba(0, 0, 0, .87);
+}
+
+.my-evaluate-table th,
+.my-evaluate-table td {
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    font: 400 12px/20px Roboto, "Helvetica Neue", sans-serif!important;
+    color: rgba(0, 0, 0, .87);
+    padding: 3px;
+}
+
+.my-evaluate-table th {
+    font-weight: bold !important;
+}
+
+.my-evaluate-table td.label {
+    color: blue;
+}

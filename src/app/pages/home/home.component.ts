@@ -12,6 +12,8 @@ am4core.useTheme(am4themes_animated);
 })
 export class HomeComponent implements OnInit {
 
+  myprogressbar: boolean = false;
+
   private chart: am4charts.XYChart;
 
   constructor(private zone: NgZone) { }
