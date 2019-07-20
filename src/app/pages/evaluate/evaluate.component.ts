@@ -18,6 +18,11 @@ export class EvaluateComponent implements OnInit {
   company_two: string;
   dataCompanyOne: any;
   dataCompanyTwo: any;
+  dataComp: any;
+  join_rate: number;
+  result_div:boolean = false;
+  dataComp1_flag: any;
+  dataComp2_flag: any;
 
   constructor(
     private _company: CompanyService,
@@ -30,30 +35,33 @@ export class EvaluateComponent implements OnInit {
 
     this.myprogressbar = true;
 
-    this._company.getCompany(this.company_one).subscribe(
+    this._company.getCompany(this.company_one, this.company_two).subscribe(
       success=>{
-        this.dataCompanyOne = success;
+
+        this.dataComp = success.comp;
+        this.dataCompanyOne = success.comp1;
+        this.dataCompanyTwo = success.comp2;
+
+        this.join_rate = this.dataComp.flag_rate * 100;
+        this.result_div = true;
+
+        this.dataComp1_flag = success.comp1_flag;
+        this.dataComp2_flag = success.comp2_flag;
       },
       error=>{
         console.error(error.status);
-      }
-    );
-
-    this._company.getCompany(this.company_two).subscribe(
-      success=>{
-        this.dataCompanyTwo = success;
-
-        this.evaluatChart();
+      },
+      ()=>{
+        this.evaluatChart(this.join_rate);
         this.myprogressbar = false;
-      },
-      error=>{
-        console.error(error.status);
-      }
+
+        // console.log('Join Rate: ' + this.join_rate);
+      } 
     );
 
   }
 
-  evaluatChart() {
+  evaluatChart(join_rate) {
 
     // create chart
     let chart = am4core.create("chartdiv", am4charts.GaugeChart);
@@ -82,24 +90,26 @@ export class EvaluateComponent implements OnInit {
     range1.value = 50;
     range1.endValue = 80;
     range1.axisFill.fillOpacity = 1;
-    range1.axisFill.fill = colorSet.getIndex(2);
+    range1.axisFill.fill = colorSet.getIndex(6);
     range1.axisFill.zIndex = -1;
 
     let range2 = axis.axisRanges.create();
     range2.value = 80;
     range2.endValue = 100;
     range2.axisFill.fillOpacity = 1;
-    range2.axisFill.fill = colorSet.getIndex(4);
+    range2.axisFill.fill = colorSet.getIndex(8);
     range2.axisFill.zIndex = -1;
 
     let hand = chart.hands.push(new am4charts.ClockHand());
+    // hand.showValue(this.join_rate * 100, 1000, am4core.ease.cubicOut);
+
 
     // using chart.setTimeout method as the timeout will be disposed together with a chart
     chart.setTimeout(randomValue, 2000);
 
     function randomValue() {
-      hand.showValue(Math.random() * 100, 1000, am4core.ease.cubicOut);
-      // chart.setTimeout(randomValue, 2000);
+      hand.showValue(join_rate, 1000, am4core.ease.cubicOut);
+      chart.setTimeout(randomValue, 2000);
     }
 
   }

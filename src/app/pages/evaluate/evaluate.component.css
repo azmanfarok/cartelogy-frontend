@@ -19,3 +19,17 @@
 .my-evaluate-table td.label {
     color: blue;
 }
+
+.my-center-td {
+    background: rgb(244, 244, 255);
+    background: linear-gradient(90deg, rgba(244, 244, 255, 0.7950367647058824) 0%, rgba(204, 204, 204, 1) 50%, rgba(244, 244, 255, 1) 100%);
+}
+
+.my_stats_label {
+    font-size: 16px;
+}
+
+.my_stats_number {
+    font-size: 46px;
+    font-weight: bold;
+}

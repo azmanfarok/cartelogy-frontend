@@ -16,8 +16,8 @@ export class CompanyService {
 
   constructor(private http: HttpClient,) { }
 
-  getCompany (id) {
-    return this.http.get<any>(this.globalUrl + 'getCompanyByMofNo/' + id, httpOptions).pipe(
+  getCompany (id1, id2) {
+    return this.http.get<any>(this.globalUrl + 'getCompanyByMofNo/' + id1 + '/' + id2, httpOptions).pipe(
       tap()
     );
   }

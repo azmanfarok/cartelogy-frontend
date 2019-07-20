@@ -36,78 +36,131 @@
     </div>
 
 
-    <div fxLayout="row" fxLayoutAlign="space-around center">
+    <div fxLayout="row" fxLayoutAlign="space-around center" [style.display]="result_div ? 'block' : 'none'">
         <mat-card fxFlex="100" class="my-m-2">
             <mat-card-header>
-                <mat-card-title *ngIf="dataCompanyOne && dataCompanyTwo">Evaluate Result</mat-card-title>
+                <mat-card-title>Evaluate Result</mat-card-title>
                 <mat-card-subtitle></mat-card-subtitle>
             </mat-card-header>
             <mat-card-content fxLayout="column" fxLayoutAlign="center center">
                 <div id="chartdiv" style="min-height: 300px; width: 500px;"></div>
-                <div fxFlex="90" class="my-m-3 my-pb-2 my-px-5" fxLayout="row" fxLayoutAlign="center center" style="border:2px solid rgb(182, 180, 180);" *ngIf="dataCompanyOne && dataCompanyTwo">
-                    <mat-icon style="color: rgb(248, 54, 54); font-size: 45px;">
-                        flag
-                    </mat-icon>
-                    <div class="my-ml-4 my-mt-2">
-                        <div style="font-size: 20px; font-weight: bold;">89% Join Together</div>
-                        <div class="mat-caption">Caption</div>
+                
+                <mat-icon style="color: rgb(248, 54, 54); font-size: 45px;" class="my-mb-2" *ngIf="join_rate >= 30">
+                    flag
+                </mat-icon>
+
+                <div fxLayout="column" fxLayoutAlign="center center">
+                    <div class="my-my-2" fxLayout="column" fxLayoutAlign="center center">
+                        <div class="my_stats_label">PATTERN MATCHED</div>
+                        <div class="my_stats_number">{{join_rate | number : '1.2-2'}}%</div>
                     </div>
                 </div>
-                <div fxLayout="row" fxLayoutAlign="center center" fxFill *ngIf="dataCompanyOne && dataCompanyTwo">
-                    <div fxFlex="45">
-                        <table cellpading="0" cellspacing="0" class="my-evaluate-table">
-                            <tr>
-                                <th colspan="2">Company One</th>
-                            </tr>
-                            <tr>
-                                <td class="label">Company name</td>
-                                <td>{{dataCompanyOne.NAMA_SYARIKAT}}</td>
-                            </tr>
-                            <tr>
-                                <td class="label">Registration No.</td>
-                                <td>{{dataCompanyOne.ID_PENDAFTARN_SYARIKAT}}</td>
-                            </tr>
-                            <tr>
-                                <td class="label">Owner</td>
-                                <td>{{dataCompanyOne.COMPANY_OWNER}}</td>
-                            </tr>
-                            <tr>
-                                <td class="label">City & State</td>
-                                <td>{{dataCompanyOne.CITY}}, {{dataCompanyOne.STATE}}</td>
-                            </tr>
-                            <tr>
-                                <td class="label">Submission Rate</td>
-                                <td></td>
-                            </tr>
-                        </table>
-                    </div>
-                    <div fxFlex="45" class="my-ml-5">
-                        <table cellpading="0" cellspacing="0" class="my-evaluate-table">
-                            <tr>
-                                <th colspan="2">Company Two</th>
-                            </tr>
-                            <tr>
-                                <td class="label">Company name</td>
-                                <td>{{dataCompanyTwo.NAMA_SYARIKAT}}</td>
-                            </tr>
-                            <tr>
-                                <td class="label">Registration No.</td>
-                                <td>{{dataCompanyTwo.ID_PENDAFTARN_SYARIKAT}}</td>
-                            </tr>
-                            <tr>
-                                <td class="label">Owner</td>
-                                <td>{{dataCompanyTwo.COMPANY_OWNER}}</td>
-                            </tr>
-                            <tr>
-                                <td class="label">City & State</td>
-                                <td>{{dataCompanyTwo.CITY}}, {{dataCompanyTwo.STATE}}</td>
-                            </tr>
-                            <tr>
-                                <td class="label">Submission Rate</td>
-                                <td></td>
-                            </tr>
-                        </table>
-                    </div>
+
+                <div fxLayout="column" fxLayoutAlign="center center" *ngIf="dataComp">
+
+                    <table cellpading="0" cellspacing="0">
+                        <tr>
+                            <td style="text-align: right;" class="my-px-2">
+                                <span style="font-size: 30px; font-weight: bold;">{{dataCompanyOne.NAMA_SYARIKAT}}</span><br/>
+                                {{dataCompanyOne.MOF_NO}}
+                            </td>
+                            <td style="font-size: 80px; font-weight: bold; text-align: center;" class="my-px-2">VS</td>
+                            <td style="text-align: left;" class="my-px-2">
+                                <span style="font-size: 30px; font-weight: bold;">{{dataCompanyTwo.NAMA_SYARIKAT}}</span><br/>
+                                {{dataCompanyTwo.MOF_NO}}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="3">&nbsp;</td>
+                        </tr>
+                        <tr>
+                            <td style="text-align: right; font-size: 18px;" class="my-px-2">{{dataCompanyOne.ID_PENDAFTARN_SYARIKAT}}</td>
+                            <td style="text-align: center; font-size: 20px;" class="my-center-td my-px-2 my-py-2">BUSINESS REGISTRATION NUMBER</td>
+                            <td style="text-align: left; font-size: 18px;" class="my-px-2">{{dataCompanyTwo.ID_PENDAFTARN_SYARIKAT}}</td>
+                        </tr>
+                        <tr>
+                            <td style="text-align: right; font-size: 18px;" class="my-px-2">{{dataCompanyOne.CITY}}</td>
+                            <td style="text-align: center; font-size: 20px;" class="my-center-td my-px-2 my-py-2">CITY</td>
+                            <td style="text-align: left; font-size: 18px;" class="my-px-2">{{dataCompanyTwo.CITY}}</td>
+                        </tr>
+                        <tr>
+                            <td style="text-align: right; font-size: 18px;" class="my-px-2">{{dataCompanyOne.STATE}}</td>
+                            <td style="text-align: center; font-size: 20px;" class="my-center-td my-px-2 my-py-2">STATE</td>
+                            <td style="text-align: left; font-size: 18px;" class="my-px-2">{{dataCompanyTwo.STATE}}</td>
+                        </tr>
+                        <tr>
+                            <td style="text-align: right; font-size: 18px;" class="my-px-2">{{dataCompanyOne.MODAL_SYARIKAT}}</td>
+                            <td style="text-align: center; font-size: 20px;" class="my-center-td my-px-2 my-py-2">CAPITAL (MYR)</td>
+                            <td style="text-align: left; font-size: 18px;" class="my-px-2">{{dataCompanyTwo.MODAL_SYARIKAT}}</td>
+                        </tr>
+                        <tr>
+                            <td colspan="3" class="my-mt-3">
+                                &nbsp;
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="text-align: right; font-size: 18px;" class="my-px-2">
+                                <mat-icon style="color: rgb(248, 54, 54);" class="my-mr-1" *ngIf="dataComp1_flag.flag2">
+                                    flag
+                                </mat-icon>
+                                <span *ngIf="!dataComp1_flag.flag2">VALID</span>
+                            </td>
+                            <td style="text-align: center; font-size: 20px;" class="my-center-td my-px-2 my-py-2">FREQUENTLY WIN</td>
+                            <td style="text-align: left; font-size: 18px;" class="my-px-2">
+                                <mat-icon style="color: rgb(248, 54, 54);" class="my-ml-1" *ngIf="dataComp2_flag.flag2">
+                                    flag
+                                </mat-icon>
+                                <span *ngIf="!dataComp1_flag.flag2">VALID</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="text-align: right; font-size: 18px;" class="my-px-2">
+                                <mat-icon style="color: rgb(248, 54, 54);" class="my-mr-1" *ngIf="dataComp1_flag.flag3">
+                                    flag
+                                </mat-icon>
+                                <span *ngIf="!dataComp1_flag.flag3">VALID</span>
+                            </td>
+                            <td style="text-align: center; font-size: 20px;" class="my-center-td my-px-2 my-py-2">FREQUENTLY LOST</td>
+                            <td style="text-align: left; font-size: 18px;" class="my-px-2">
+                                <mat-icon style="color: rgb(248, 54, 54);" class="my-ml-1" *ngIf="dataComp2_flag.flag3">
+                                    flag
+                                </mat-icon>
+                                <span *ngIf="!dataComp2_flag.flag3">VALID</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="text-align: right; font-size: 18px;" class="my-px-2">
+                                <mat-icon style="color: rgb(248, 54, 54);" class="my-mr-1" *ngIf="dataComp1_flag.flag4">
+                                    flag
+                                </mat-icon>
+                                <span *ngIf="!dataComp1_flag.flag4">VALID</span>
+                            </td>
+                            <td style="text-align: center; font-size: 20px;" class="my-center-td my-px-2 my-py-2">FREQUENTLY WIN BY AGENCY</td>
+                            <td style="text-align: left; font-size: 18px;" class="my-px-2">
+                                <mat-icon style="color: rgb(248, 54, 54);" class="my-ml-1" *ngIf="dataComp2_flag.flag4">
+                                    flag
+                                </mat-icon>
+                                <span *ngIf="!dataComp2_flag.flag4">VALID</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="text-align: right; font-size: 18px;" class="my-px-2">
+                                <mat-icon style="color: rgb(248, 54, 54);" class="my-mr-1" *ngIf="dataComp1_flag.flag5">
+                                    flag
+                                </mat-icon>
+                                <span *ngIf="!dataComp1_flag.flag5">VALID</span>
+                            </td>
+                            <td style="text-align: center; font-size: 20px;" class="my-center-td my-px-2 my-py-2">SINGLE BIDDER</td>
+                            <td style="text-align: left; font-size: 18px;" class="my-px-2">
+                                <mat-icon style="color: rgb(248, 54, 54);" class="my-ml-1" *ngIf="dataComp2_flag.flag5">
+                                    flag
+                                </mat-icon>
+                                <span *ngIf="!dataComp2_flag.flag5">VALID</span>
+                            </td>
+                        </tr>
+                    </table>
+
+
                 </div>
             </mat-card-content>
         </mat-card>
