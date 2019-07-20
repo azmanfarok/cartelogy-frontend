@@ -11,13 +11,17 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { EvaluateComponent } from './pages/evaluate/evaluate.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { OcdsComponent } from './pages/ocds/ocds.component';
+import { GlossaryComponent } from './pages/glossary/glossary.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LayoutComponent,
     HomeComponent,
-    EvaluateComponent
+    EvaluateComponent,
+    OcdsComponent,
+    GlossaryComponent
   ],
   imports: [
     BrowserModule,

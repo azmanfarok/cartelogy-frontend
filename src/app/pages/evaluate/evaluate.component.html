@@ -2,12 +2,12 @@
     <mat-progress-bar class="my-progress-bar" color="accent" mode="indeterminate" [value]="50" [bufferValue]="75">
     </mat-progress-bar>
 </div>
-<div fxLayout="column" fxLayoutAlign="center" class="my-m-3">
+<div fxLayout="column" fxLayoutAlign="center" class="my-m-3" style="min-height: 400px;">
 
     <div fxLayout="row" fxLayoutAlign="space-around center">
         <mat-card fxFlex="100" class="my-m-2">
             <mat-card-header>
-                <mat-card-title>Comapny Evaluation</mat-card-title>
+                <mat-card-title>Company Evaluation</mat-card-title>
                 <mat-card-subtitle></mat-card-subtitle>
             </mat-card-header>
             <mat-card-content fxLayout="column" fxLayoutAlign="center center">
@@ -43,9 +43,9 @@
                 <mat-card-subtitle></mat-card-subtitle>
             </mat-card-header>
             <mat-card-content fxLayout="column" fxLayoutAlign="center center">
-                <div id="chartdiv" style="min-height: 300px; width: 500px;"></div>
-                
-                <mat-icon style="color: rgb(248, 54, 54); font-size: 45px;" class="my-mb-2" *ngIf="join_rate >= 30">
+                <!-- <div id="chartdiv" style="min-height: 300px; width: 500px;"></div> -->
+
+                <!-- <mat-icon style="color: rgb(248, 54, 54); font-size: 45px;" class="my-mb-2" *ngIf="join_rate >= 50">
                     flag
                 </mat-icon>
 
@@ -54,110 +54,175 @@
                         <div class="my_stats_label">PATTERN MATCHED</div>
                         <div class="my_stats_number">{{join_rate | number : '1.2-2'}}%</div>
                     </div>
-                </div>
+                </div> -->
 
-                <div fxLayout="column" fxLayoutAlign="center center" *ngIf="dataComp">
+                <div fxLayout="column" fxLayoutAlign="center center">
 
                     <table cellpading="0" cellspacing="0">
                         <tr>
-                            <td style="text-align: right;" class="my-px-2">
-                                <span style="font-size: 30px; font-weight: bold;">{{dataCompanyOne.NAMA_SYARIKAT}}</span><br/>
-                                {{dataCompanyOne.MOF_NO}}
+                            <td colspan="3" style="text-align: center;">
+                                <div fxLayout="column" fxLayoutAlign="center center">
+                                    <div id="chartdiv" style="min-height: 300px; width: 500px; text-align: center;"></div>
+                                </div>
                             </td>
-                            <td style="font-size: 80px; font-weight: bold; text-align: center;" class="my-px-2">VS</td>
+                        </tr>
+                        <tr>
+                            <td style="text-align: right;" class="my-px-2">
+                                &nbsp;
+                            </td>
+                            <td style="text-align: center;" class="my-px-2">
+                                <mat-icon style="color: rgb(248, 54, 54); font-size: 45px;" class="my-mb-2" *ngIf="join_rate >= flag_de1">
+                                    flag
+                                </mat-icon>
+                                <br/>
+                                <div class="my_stats_label">PATTERN MATCHED</div>
+                                <div class="my_stats_number">{{join_rate | number : '1.2-2'}}%</div>
+                                <!-- <br/>
+                                <mat-slider min="1" max="100" step="5" [(value)]="flag_de1" thumbLabel="true"></mat-slider> -->
+                            </td>
                             <td style="text-align: left;" class="my-px-2">
-                                <span style="font-size: 30px; font-weight: bold;">{{dataCompanyTwo.NAMA_SYARIKAT}}</span><br/>
-                                {{dataCompanyTwo.MOF_NO}}
+                                &nbsp;
                             </td>
                         </tr>
                         <tr>
                             <td colspan="3">&nbsp;</td>
                         </tr>
-                        <tr>
-                            <td style="text-align: right; font-size: 18px;" class="my-px-2">{{dataCompanyOne.ID_PENDAFTARN_SYARIKAT}}</td>
-                            <td style="text-align: center; font-size: 20px;" class="my-center-td my-px-2 my-py-2">BUSINESS REGISTRATION NUMBER</td>
-                            <td style="text-align: left; font-size: 18px;" class="my-px-2">{{dataCompanyTwo.ID_PENDAFTARN_SYARIKAT}}</td>
-                        </tr>
-                        <tr>
-                            <td style="text-align: right; font-size: 18px;" class="my-px-2">{{dataCompanyOne.CITY}}</td>
-                            <td style="text-align: center; font-size: 20px;" class="my-center-td my-px-2 my-py-2">CITY</td>
-                            <td style="text-align: left; font-size: 18px;" class="my-px-2">{{dataCompanyTwo.CITY}}</td>
-                        </tr>
-                        <tr>
-                            <td style="text-align: right; font-size: 18px;" class="my-px-2">{{dataCompanyOne.STATE}}</td>
-                            <td style="text-align: center; font-size: 20px;" class="my-center-td my-px-2 my-py-2">STATE</td>
-                            <td style="text-align: left; font-size: 18px;" class="my-px-2">{{dataCompanyTwo.STATE}}</td>
-                        </tr>
-                        <tr>
-                            <td style="text-align: right; font-size: 18px;" class="my-px-2">{{dataCompanyOne.MODAL_SYARIKAT}}</td>
-                            <td style="text-align: center; font-size: 20px;" class="my-center-td my-px-2 my-py-2">CAPITAL (MYR)</td>
-                            <td style="text-align: left; font-size: 18px;" class="my-px-2">{{dataCompanyTwo.MODAL_SYARIKAT}}</td>
-                        </tr>
-                        <tr>
-                            <td colspan="3" class="my-mt-3">
-                                &nbsp;
-                            </td>
-                        </tr>
-                        <tr>
-                            <td style="text-align: right; font-size: 18px;" class="my-px-2">
-                                <mat-icon style="color: rgb(248, 54, 54);" class="my-mr-1" *ngIf="dataComp1_flag.flag2">
-                                    flag
-                                </mat-icon>
-                                <span *ngIf="!dataComp1_flag.flag2">VALID</span>
-                            </td>
-                            <td style="text-align: center; font-size: 20px;" class="my-center-td my-px-2 my-py-2">FREQUENTLY WIN</td>
-                            <td style="text-align: left; font-size: 18px;" class="my-px-2">
-                                <mat-icon style="color: rgb(248, 54, 54);" class="my-ml-1" *ngIf="dataComp2_flag.flag2">
-                                    flag
-                                </mat-icon>
-                                <span *ngIf="!dataComp1_flag.flag2">VALID</span>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td style="text-align: right; font-size: 18px;" class="my-px-2">
-                                <mat-icon style="color: rgb(248, 54, 54);" class="my-mr-1" *ngIf="dataComp1_flag.flag3">
-                                    flag
-                                </mat-icon>
-                                <span *ngIf="!dataComp1_flag.flag3">VALID</span>
-                            </td>
-                            <td style="text-align: center; font-size: 20px;" class="my-center-td my-px-2 my-py-2">FREQUENTLY LOST</td>
-                            <td style="text-align: left; font-size: 18px;" class="my-px-2">
-                                <mat-icon style="color: rgb(248, 54, 54);" class="my-ml-1" *ngIf="dataComp2_flag.flag3">
-                                    flag
-                                </mat-icon>
-                                <span *ngIf="!dataComp2_flag.flag3">VALID</span>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td style="text-align: right; font-size: 18px;" class="my-px-2">
-                                <mat-icon style="color: rgb(248, 54, 54);" class="my-mr-1" *ngIf="dataComp1_flag.flag4">
-                                    flag
-                                </mat-icon>
-                                <span *ngIf="!dataComp1_flag.flag4">VALID</span>
-                            </td>
-                            <td style="text-align: center; font-size: 20px;" class="my-center-td my-px-2 my-py-2">FREQUENTLY WIN BY AGENCY</td>
-                            <td style="text-align: left; font-size: 18px;" class="my-px-2">
-                                <mat-icon style="color: rgb(248, 54, 54);" class="my-ml-1" *ngIf="dataComp2_flag.flag4">
-                                    flag
-                                </mat-icon>
-                                <span *ngIf="!dataComp2_flag.flag4">VALID</span>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td style="text-align: right; font-size: 18px;" class="my-px-2">
-                                <mat-icon style="color: rgb(248, 54, 54);" class="my-mr-1" *ngIf="dataComp1_flag.flag5">
-                                    flag
-                                </mat-icon>
-                                <span *ngIf="!dataComp1_flag.flag5">VALID</span>
-                            </td>
-                            <td style="text-align: center; font-size: 20px;" class="my-center-td my-px-2 my-py-2">SINGLE BIDDER</td>
-                            <td style="text-align: left; font-size: 18px;" class="my-px-2">
-                                <mat-icon style="color: rgb(248, 54, 54);" class="my-ml-1" *ngIf="dataComp2_flag.flag5">
-                                    flag
-                                </mat-icon>
-                                <span *ngIf="!dataComp2_flag.flag5">VALID</span>
-                            </td>
-                        </tr>
+                        <tbody *ngIf="result_div">
+                            <tr>
+                                <td style="text-align: right; max-width: 250px;" class="my-px-2">
+                                    <span style="font-size: 30px; font-weight: bold;">{{dataCompanyOne.NAMA_SYARIKAT}}</span><br/> {{dataCompanyOne.MOF_NO}}
+                                </td>
+                                <td style="font-size: 80px; font-weight: bold; text-align: center;" class="my-px-2">VS</td>
+                                <td style="text-align: left; max-width: 250px;" class="my-px-2">
+                                    <span style="font-size: 30px; font-weight: bold;">{{dataCompanyTwo.NAMA_SYARIKAT}}</span><br/> {{dataCompanyTwo.MOF_NO}}
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="3">&nbsp;</td>
+                            </tr>
+                            <tr>
+                                <td style="text-align: right; font-size: 18px;" class="my-px-2">{{dataCompanyOne.ID_PENDAFTARN_SYARIKAT}}</td>
+                                <td style="text-align: center; font-size: 20px;" class="my-center-td my-px-2 my-py-2">BUSINESS REGISTRATION NUMBER</td>
+                                <td style="text-align: left; font-size: 18px;" class="my-px-2">{{dataCompanyTwo.ID_PENDAFTARN_SYARIKAT}}</td>
+                            </tr>
+                            <tr>
+                                <td style="text-align: right; font-size: 18px;" class="my-px-2">{{dataCompanyOne.CITY}}</td>
+                                <td style="text-align: center; font-size: 20px;" class="my-center-td my-px-2 my-py-2">CITY</td>
+                                <td style="text-align: left; font-size: 18px;" class="my-px-2">{{dataCompanyTwo.CITY}}</td>
+                            </tr>
+                            <tr>
+                                <td style="text-align: right; font-size: 18px;" class="my-px-2">{{dataCompanyOne.STATE}}</td>
+                                <td style="text-align: center; font-size: 20px;" class="my-center-td my-px-2 my-py-2">STATE</td>
+                                <td style="text-align: left; font-size: 18px;" class="my-px-2">{{dataCompanyTwo.STATE}}</td>
+                            </tr>
+                            <tr>
+                                <td style="text-align: right; font-size: 18px;" class="my-px-2">{{dataCompanyOne.MODAL_SYARIKAT}}</td>
+                                <td style="text-align: center; font-size: 20px;" class="my-center-td my-px-2 my-py-2">CAPITAL (MYR)</td>
+                                <td style="text-align: left; font-size: 18px;" class="my-px-2">{{dataCompanyTwo.MODAL_SYARIKAT}}</td>
+                            </tr>
+                            <tr>
+                                <td colspan="3" class="my-mt-3">
+                                    &nbsp;
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="text-align: right; font-size: 18px;" class="my-px-2">
+                                    <span class="my-mx-1">{{dataComp1_flag.flag2_rate}}</span>
+                                    <mat-icon style="color: rgb(248, 54, 54);" class="my-mr-1" *ngIf="dataComp1_flag.flag2_rate >= flag_de2">
+                                        flag
+                                    </mat-icon>
+                                    <mat-icon style="color: rgb(37, 209, 3);" class="my-mr-1" *ngIf="dataComp1_flag.flag2_rate < flag_de2">
+                                        radio_button_checked
+                                    </mat-icon>
+                                    <!-- <span *ngIf="!dataComp1_flag.flag2">VALID</span> -->
+                                </td>
+                                <td style="text-align: center; font-size: 20px;" class="my-center-td my-px-2 my-py-2">
+                                    FREQUENTLY WIN [{{flag_de2}}]<br/>
+                                    <mat-slider min="0.1" max="1" step="0.1" [(value)]="flag_de2" thumbLabel="true"></mat-slider>
+                                </td>
+                                <td style="text-align: left; font-size: 18px;" class="my-px-2">
+                                    <mat-icon style="color: rgb(248, 54, 54);" class="my-ml-1" *ngIf="dataComp2_flag.flag2_rate >= flag_de2">
+                                        flag
+                                    </mat-icon>
+                                    <mat-icon style="color: rgb(37, 209, 3);" class="my-ml-1" *ngIf="dataComp2_flag.flag2_rate < flag_de2">
+                                        radio_button_checked
+                                    </mat-icon>
+                                    <span class="my-mx-1">{{dataComp2_flag.flag2_rate}}</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="text-align: right; font-size: 18px;" class="my-px-2">
+                                    <span class="my-mx-1">{{dataComp1_flag.flag3_rate}}</span>
+                                    <mat-icon style="color: rgb(248, 54, 54);" class="my-mr-1" *ngIf="dataComp1_flag.flag3_rate >= flag_de3">
+                                        flag
+                                    </mat-icon>
+                                    <mat-icon style="color: rgb(37, 209, 3);" class="my-mr-1" *ngIf="dataComp1_flag.flag3_rate < flag_de3">
+                                        radio_button_checked
+                                    </mat-icon>
+                                </td>
+                                <td style="text-align: center; font-size: 20px;" class="my-center-td my-px-2 my-py-2">
+                                    FREQUENTLY LOST [{{flag_de3}}]<br/>
+                                    <mat-slider min="0.1" max="1" step="0.1" [(value)]="flag_de3" thumbLabel="true"></mat-slider>
+                                </td>
+                                <td style="text-align: left; font-size: 18px;" class="my-px-2">
+                                    <mat-icon style="color: rgb(248, 54, 54);" class="my-ml-1" *ngIf="dataComp2_flag.flag3_rate >= flag_de3">
+                                        flag
+                                    </mat-icon>
+                                    <mat-icon style="color: rgb(37, 209, 3);" class="my-ml-1" *ngIf="dataComp2_flag.flag3_rate < flag_de3">
+                                        radio_button_checked
+                                    </mat-icon>
+                                    <span class="my-mx-1">{{dataComp2_flag.flag3_rate}}</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="text-align: right; font-size: 18px;" class="my-px-2">
+                                    <span class="my-mx-1">{{dataComp1_flag.flag4_rate}}</span>
+                                    <mat-icon style="color: rgb(248, 54, 54);" class="my-mr-1" *ngIf="dataComp1_flag.flag4_rate >= flag_de4">
+                                        flag
+                                    </mat-icon>
+                                    <mat-icon style="color: rgb(37, 209, 3);" class="my-mr-1" *ngIf="dataComp1_flag.flag4_rate < flag_de3">
+                                        radio_button_checked
+                                    </mat-icon>
+                                </td>
+                                <td style="text-align: center; font-size: 20px;" class="my-center-td my-px-2 my-py-2">
+                                    FREQUENTLY WIN BY AGENCY [{{flag_de4}}]<br/>
+                                    <mat-slider min="0.1" max="1" step="0.1" [(value)]="flag_de4" thumbLabel="true"></mat-slider>
+                                </td>
+                                <td style="text-align: left; font-size: 18px;" class="my-px-2">
+                                    <mat-icon style="color: rgb(248, 54, 54);" class="my-ml-1" *ngIf="dataComp2_flag.flag4_rate >= flag_de4">
+                                        flag
+                                    </mat-icon>
+                                    <mat-icon style="color: rgb(37, 209, 3);" class="my-ml-1" *ngIf="dataComp2_flag.flag4 < flag_de4">
+                                        radio_button_checked
+                                    </mat-icon>
+                                    <span class="my-mx-1">{{dataComp2_flag.flag4_rate}}</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="text-align: right; font-size: 18px;" class="my-px-2">
+                                    <span class="my-mx-1">{{dataComp1_flag.flag5_rate}}</span>
+                                    <mat-icon style="color: rgb(248, 54, 54);" class="my-mr-1" *ngIf="dataComp1_flag.flag5_rate >= flag_de5">
+                                        flag
+                                    </mat-icon>
+                                    <mat-icon style="color: rgb(37, 209, 3);" class="my-mr-1" *ngIf="dataComp1_flag.flag5_rate < flag_de5">
+                                        radio_button_checked
+                                    </mat-icon>
+                                </td>
+                                <td style="text-align: center; font-size: 20px;" class="my-center-td my-px-2 my-py-2">
+                                    SINGLE BIDDER [{{flag_de5}}]<br/>
+                                    <mat-slider min="0.1" max="1" step="0.1" [(value)]="flag_de5" thumbLabel="true"></mat-slider>
+                                </td>
+                                <td style="text-align: left; font-size: 18px;" class="my-px-2">
+                                    <mat-icon style="color: rgb(248, 54, 54);" class="my-ml-1" *ngIf="dataComp2_flag.flag5_rate >= flag_de5">
+                                        flag
+                                    </mat-icon>
+                                    <mat-icon style="color: rgb(37, 209, 3);" class="my-ml-1" *ngIf="dataComp2_flag.flag5_rate < flag_de5">
+                                        radio_button_checked
+                                    </mat-icon>
+                                    <span class="my-mx-1">{{dataComp2_flag.flag5_rate}}</span>
+                                </td>
+                            </tr>
+                        </tbody>
                     </table>
 
 

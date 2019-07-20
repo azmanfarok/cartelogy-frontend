@@ -24,6 +24,12 @@ export class EvaluateComponent implements OnInit {
   dataComp1_flag: any;
   dataComp2_flag: any;
 
+  flag_de1: number = 50;
+  flag_de2: number = 0.7;
+  flag_de3: number = 0.7;
+  flag_de4: number = 0.6;
+  flag_de5: number = 0.5;
+
   constructor(
     private _company: CompanyService,
   ) { }

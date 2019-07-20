@@ -12,12 +12,18 @@ const httpOptions = {
 })
 export class CompanyService {
 
-  private globalUrl = 'http://localhost/cartelogy-backend/company/';
+  private globalUrl = 'https://cartelogy.mentadak.com/company/';
 
   constructor(private http: HttpClient,) { }
 
   getCompany (id1, id2) {
     return this.http.get<any>(this.globalUrl + 'getCompanyByMofNo/' + id1 + '/' + id2, httpOptions).pipe(
+      tap()
+    );
+  }
+
+  getOCDS () {
+    return this.http.get<any>(this.globalUrl + 'getOCDS', httpOptions).pipe(
       tap()
     );
   }

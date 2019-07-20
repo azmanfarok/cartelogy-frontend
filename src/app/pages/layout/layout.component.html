@@ -2,10 +2,24 @@
     <mat-toolbar-row>
         <span>Cartelogy</span>
         <div fxFlex></div>
-        <div routerLink="/evaluate" class="">Evaluate</div>
+        <div routerLink="/" class="my-px-1" style="font-size: 15px; cursor: pointer;">Insight</div>
+        <div routerLink="/evaluate" class="my-px-1" style="font-size: 15px; cursor: pointer;">Forsight</div>
+        <div routerLink="/ocds" class="my-px-1" style="font-size: 15px; cursor: pointer;">OCDS</div>
+        <div routerLink="/glossary" class="my-px-1" style="font-size: 15px; cursor: pointer;">Glossary</div>
     </mat-toolbar-row>
 </mat-toolbar>
 
 <!-- <mat-drawer-container autosize> -->
 <router-outlet></router-outlet>
 <!-- </mat-drawer-container> -->
+
+<footer class="my-p-3" style="background-color: #3f51b5; color: aliceblue;">
+    <div fxLayout="row" fxLayoutAlign="space-between center">
+        <div style="font-size: 12px;">
+            Current Version: 1.3
+        </div>
+        <div style="font-size: 12px;" fxLayout="row" fxLayoutAlign="center center">
+            Powered by <img style="width: 22px; height: 22px;" alt="My image name" src="./assets/mantis.svg" class="my-px-1" alt="Mentadak || Mantis" title="Mentadak || Mantis"> Mentadak Team . Malaysia . ©2019.
+        </div>
+    </div>
+</footer>
